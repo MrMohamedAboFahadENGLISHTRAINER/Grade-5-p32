@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 5 English - Top Stars 3: Kids' Health</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary: #f59e0b;
+            --bg-light: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+            --correct: #22c55e;
+            --incorrect: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Top Header & Branding */
+        .header-card {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            border: 3px solid #bae6fd;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.1);
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .school-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: #eab308;
+            color: white;
+            font-weight: 800;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .school-text {
+            text-align: left;
+        }
+
+        .school-text .ar {
+            font-weight: 700;
+            color: #1e3a8a;
+            font-size: 16px;
+        }
+
+        .school-text .en {
+            font-size: 11px;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .title-badge {
+            background: #fef08a;
+            color: #854d0e;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .teacher-box {
+            background: white;
+            border: 2px solid #7dd3fc;
+            border-radius: 15px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        .teacher-box h3 {
+            color: var(--primary-dark);
+            font-size: 20px;
+        }
+
+        /* Student Input Section */
+        .student-section {
+            background: white;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 15px 20px;
+        }
+
+        .student-section label {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .student-section input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #94a3b8;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .student-section input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .sec-num {
+            background: #ef4444;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .sec-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Vocabulary Grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .vocab-card {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        .vocab-card .icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .vocab-card .word {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .vocab-card .meaning {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+
+        /* Reading Article */
+        .article-box {
+            background: #fefce8;
+            border: 2px solid #fef08a;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .article-title {
+            color: #b45309;
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .article-part {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .article-part h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .remember-box {
+            background: #fee2e2;
+            border: 2px dashed #ef4444;
+            border-radius: 10px;
+            padding: 10px 15px;
+            color: #991b1b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* Interactive Quiz */
+        .quiz-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .quiz-q {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-tf {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            background: white;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-tf.correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #15803d;
+        }
+
+        .btn-tf.incorrect {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c;
+        }
+
+        /* Certificate Score Box */
+        .score-card {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+        }
+
+        .score-card h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .score-number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #fef08a;
+            margin: 10px 0;
+        }
+
+        .audio-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Main Header Header -->
+    <div class="header-card">
+        <div class="school-info">
+            <div class="school-logo">
+                <div class="logo-icon">ب</div>
+                <div class="school-text">
+                    <div class="ar">مدارس البيارق الأهلية</div>
+                    <div class="en">AL-BAYARIQ PRIVATE SCHOOLS</div>
+                </div>
+            </div>
+            <div style="font-weight: 800; color: #0284c7; font-size: 14px;">Grade 5 – English</div>
+        </div>
+
+        <div class="title-badge">Top Stars 3: Kids' Health</div>
+
+        <div class="teacher-box">
+            <p style="font-size: 12px; color: #64748b; font-weight: 600;">Prepared by</p>
+            <h3>Mr. Mohamed Abdalla Abo Fahad</h3>
+        </div>
+    </div>
+
+    <!-- Student Name Entry -->
+    <div class="student-section">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Type your name here..." oninput="updateStudentName()">
+        <p style="font-size: 12px; color: #64748b; margin-top: 5px;">Your name will appear on your final result certificate.</p>
+    </div>
+
+    <!-- 1. Vocabulary Flashcards Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">1</div>
+            <div class="sec-title">Vocabulary (Listen & Learn)</div>
+        </div>
+        <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+
+    <!-- 2. Interactive Reading Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">2</div>
+            <div class="sec-title">Read & Listen: Kids' Health</div>
+        </div>
+        <div class="article-box">
+            <div class="article-title">Kids' Health <span style="font-size: 14px; font-weight: normal; color: #78350f;">by Dr. Gary Potts</span></div>
+            <p style="font-size: 13px; text-align: center; margin-bottom: 15px; color: #92400e;">
+                Not feeling well? Here are some things you can do before you visit your doctor, dentist or pharmacist!
+            </p>
+
+            <div class="article-part">
+                <h4>🤕 Headache</h4>
+                <p>Put some ice in a towel and put it on your head. Relax in the dark for about half an hour. Sometimes our head hurts because of a toothache or an earache so call the doctor when your headache doesn't stop!</p>
+                <button class="audio-btn" onclick="speakText('Put some ice in a towel and put it on your head. Relax in the dark for about half an hour.')">🔊 Listen</button>
+            </div>
+
+            <div class="article-part">
+                <h4>🥤 Sore Throat</h4>
+                <p>You should drink warm water with honey and lemon juice. Mix two tablespoons of honey and two tablespoons of lemon juice in a cup, then add warm water. You shouldn't drink cold water when you have a sore throat!</p>
+                <button class="audio-btn" onclick="speakText('You should drink warm water with honey and lemon juice. You shouldn't drink cold water when you have a sore throat!')">🔊 Listen</button>
+            </div>
+
+            <div class="article-part">
+                <h4>🦷 Toothache</h4>
+                <p>You can mix water and some salt in a glass. Rinse your mouth with that for a minute, but don't swallow it. Also, you shouldn't eat desserts when you have a toothache!</p>
+                <button class="audio-btn" onclick="speakText('You can mix water and some salt in a glass. Rinse your mouth with that for a minute. You shouldn't eat desserts when you have a toothache!')">🔊 Listen</button>
+            </div>
+
+            <div class="remember-box">
+                <span>⚠️</span>
+                <span>Remember! You shouldn't take medicine without asking a doctor first!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. True or False Quiz Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="sec-num">3</div>
+            <div class="sec-title">Comprehension Quiz (True or False)</div>
+        </div>
+        <div id="tfQuiz"></div>
+    </div>
+
+    <!-- Final Score Display -->
+    <div class="score-card">
+        <h2>Great Job, <span id="displayName">Student</span>!</h2>
+        <p>Your Current Score</p>
+        <div class="score-number"><span id="userScore">0</span> / 5</div>
+        <p id="feedbackMsg">Answer the questions above to complete your score!</p>
+    </div>
+</div>
+
+<script>
+    // Vocabulary Data
+    const vocabData = [
+        { word: 'Medicine', meaning: 'دواء', icon: '💊' },
+        { word: 'Pharmacist', meaning: 'صيدلي', icon: '👨‍⚕️' },
+        { word: 'Headache', meaning: 'صداع', icon: '🤕' },
+        { word: 'Toothache', meaning: 'ألم أسنان', icon: '🦷' },
+        { word: 'Earache', meaning: 'ألم أذن', icon: '👂' },
+        { word: 'Sore throat', meaning: 'التهاب حلق', icon: '🥤' },
+        { word: 'Cold', meaning: 'زكام', icon: '🤧' },
+        { word: 'Stomachache', meaning: 'ألم بطن', icon: '🤢' },
+        { word: 'Cough', meaning: 'سعال', icon: '😷' },
+        { word: 'Fever', meaning: 'حمى', icon: '🌡️' }
+    ];
+
+    // Quiz Questions Data
+    const quizData = [
+        { q: "1. Your head sometimes hurts because of a stomachache.", a: false },
+        { q: "2. You should drink warm water with lemon juice and honey for a sore throat.", a: true },
+        { q: "3. You should mix lemon juice with salt for your toothache.", a: false },
+        { q: "4. You can eat desserts when you have a toothache.", a: false },
+        { q: "5. You should ask a doctor before you take medicine.", a: true }
+    ];
+
+    let score = 0;
+    let answeredCount = 0;
+
+    // Render Vocabulary Flashcards
+    function renderVocab() {
+        const grid = document.getElementById('vocabGrid');
+        grid.innerHTML = vocabData.map(v => `
+            <div class="vocab-card" onclick="speakText('${v.word}')">
+                <div class="icon">${v.icon}</div>
+                <div class="word">${v.word}</div>
+                <div class="meaning">${v.meaning}</div>
+            </div>
+        `).join('');
+    }
+
+    // Speech Synthesis Audio function
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    // Render True or False Quiz
+    function renderQuiz() {
+        const quizContainer = document.getElementById('tfQuiz');
+        quizContainer.innerHTML = quizData.map((item, index) => `
+            <div class="quiz-item">
+                <div class="quiz-q">${item.q}</div>
+                <div class="btn-group">
+                    <button class="btn-tf" id="btn-t-${index}" onclick="checkAnswer(${index}, true)">True</button>
+                    <button class="btn-tf" id="btn-f-${index}" onclick="checkAnswer(${index}, false)">False</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Answer Verification Logic
+    function checkAnswer(index, userAns) {
+        const correctAns = quizData[index].a;
+        const btnT = document.getElementById(`btn-t-${index}`);
+        const btnF = document.getElementById(`btn-f-${index}`);
+
+        if (btnT.disabled) return; // Prevent re-clicking
+
+        btnT.disabled = true;
+        btnF.disabled = true;
+
+        if (userAns === correctAns) {
+            score++;
+            if (userAns === true) btnT.classList.add('correct');
+            else btnF.classList.add('correct');
+        } else {
+            if (userAns === true) {
+                btnT.classList.add('incorrect');
+                btnF.classList.add('correct');
+            } else {
+                btnF.classList.add('incorrect');
+                btnT.classList.add('correct');
+            }
+        }
+
+        answeredCount++;
+        document.getElementById('userScore').innerText = score;
+
+        if (answeredCount === quizData.length) {
+            const name = document.getElementById('studentName').value || 'Student';
+            document.getElementById('feedbackMsg').innerText = `Congratulations ${name}! You completed the quiz with ${score}/${quizData.length} correct answers!`;
+        }
+    }
+
+    // Update Live Student Name
+    function updateStudentName() {
+        const val = document.getElementById('studentName').value;
+        document.getElementById('displayName').innerText = val.trim() !== '' ? val : 'Student';
+    }
+
+    // Initial Load Setup
+    window.onload = function() {
+        renderVocab();
+        renderQuiz();
+    };
+</script>
+
+</body>
+</html>
